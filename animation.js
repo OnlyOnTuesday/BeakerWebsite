@@ -1,3 +1,9 @@
+/*TODO:
+ * use the element.remove property to remove blocks
+ * figure out how to dynamically readjust the ball and bar as things are removed 
+ */
+
+
 class Bar {
     constructor(elem, startX, startY, length){
 	this.elem = elem;
@@ -55,8 +61,8 @@ class Ball {
 
     //fix this function
     move(){
-	if (this.xDirection == 0){
-	    if (this.yDirection == 0){
+	if (this.yDirection == 0){
+	    if (this.xDirection == 0){
 		//down and to the right
 		console.log("down and right");
 		this.x += 10;
@@ -74,7 +80,7 @@ class Ball {
 		
 	    }
 	} else {
-	    if (this.yDirection == 0){
+	    if (this.xDirection == 0){
 		//up and to the right
 		console.log("up and right");
 		this.x += 10;
@@ -121,10 +127,10 @@ class Ball {
     set setXDir(dir){
 	if (dir == 1){
 	    //left
-	    this.xDirection == 1;
+	    this.xDirection = 1;
 	} else {
 	    //right by default
-	    this.xDirection == 0;
+	    this.xDirection = 0;
 	}
     }
 
@@ -135,6 +141,22 @@ class Ball {
 	} else {
 	    //down by default
 	    this.yDirection = 0;
+	}
+    }
+
+    xToggle(){
+	if (this.xDirection == 1){
+	    this.xDirection = 0;
+	} else {
+	    this.xDirection = 1;
+	}
+    }
+
+    yToggle(){
+	if (this.yDirection == 1){
+	    this.yDirection = 0;
+	} else {
+	    this.yDirection = 1;
 	}
     }
 
@@ -168,16 +190,94 @@ function start(){
 
 function moveBall(ball, bar){
     ball.move();
-    if (ball.yPos == 390){
-	//hit the bottom of play area
-	console.log(ball.hitBar(bar));
-	if (ball.hitBar(bar)){
-	    //ball hit the bar
+
+
+    if (ball.yPos >= 380){
+	//is it in a corner
+	if (ball.xPos >= 380 && ball.hitBar(bar)){
+	    //bottom right corner
 	    ball.setYDir = 1;
+	    ball.setXDir = 1;
+	    console.log("x: " + ball.xPos);
+	    console.log("y: " + ball.yPos);
+	} else if (ball.xPos <= 10 && ball.hitBar(bar)){
+	    //bottom left corner
+	    ball.setYDir = 1;
+	    ball.setXDir = 0;
+	} else if (!ball.hitBar(bar)){
+	    //did they lose
+	    console.log("You lost");
 	} else {
-	    console.log("Lost");
+	    ball.yToggle();
 	}
+
+    } else if (ball.yPos <= 10){
+	//top corners
+	if (ball.xPos <= 10){
+	    //top left corner
+	    ball.xToggle();
+	    ball.yToggle();
+	} else if (ball.xPos >= 370){
+	    //top right corner
+	    ball.xToggle();
+	    ball.yToggle();
+	} else {
+	    //hit the top of the game area
+	    console.log("x: " + ball.xPos);
+	    console.log("y: " + ball.yPos);
+	    ball.yToggle();
+	}
+    } else if (ball.xPos <= 10){
+	//left side wall
+	ball.yToggle();
+    } else if (ball.xPos >= 380){
+	//right side wall
+	ball.yToggle();
     }
+
+    
+
+    
+
+    // if (ball.yPos == 390){
+
+    // 	//hit the bottom of play area
+    // 	if (ball.hitBar(bar)){
+    // 	    //ball hit the bar
+    // 	    ball.setYDir = 1;
+    // 	} else {
+    // 	    console.log("Lost");
+    // 	}
+    // }
+
+    // if (ball.xPos >= 380 && ball.yPos >= 380 && ball.hitBar(bar)){
+    // 	if (ball.xDir == 1){
+    // 	    ball.xDir == 0;
+    // 	} else {
+    // 	    ball.xDir == 1;
+    // 	}
+
+    // 	if (ball.yDir == 1){
+    // 	    ball.yDir = 0;
+    // 	} else {
+    // 	    ball.yDir == 1;
+    // 	}
+    // }
+
+    //hit the right wall
+    // if (ball.xPos >= 385){
+
+    // 	if (ball.yDir == 1){
+    // 	    ball.setYDir = 0;
+    // 	} else {
+    // 	    ball.setYDir = 1;
+    // 	}
+    // }
+    
+    //hit the left wall
+    
+    
+    //hit the ceiling
 }
 
 // function start(){
