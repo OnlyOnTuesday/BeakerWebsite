@@ -36,17 +36,42 @@ header img {
   margin-right: 20px;
 }
 
+.nav{
+    background-color: lightblue;
+    color: black;
+    height: 100%;
+    width: 20%;
+    font-size: large;
+    position: fixed;
+    z-index: 1;
+    left: 0px;
+    top: 192px;
+    overflow-x: hidden;
+    padding: 20px 10px;
+    padding-left: 20px;
+}
+
+.nav a{
+    color: black;
+}
+
+.nav a:visited{
+    color: purple;
+}
+
 .social{
-  height: 100%;
+  background-color: black;
+  color: white;
+  height: 220px;
   width: 20%;
   position: fixed;
   z-index: 1;
   overflow-x: hidden;
-  top: 192px;
+  /*top: 192px;*/
   bottom: 0px;
   left: 0px;
   padding: 10px;
-  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .social p{

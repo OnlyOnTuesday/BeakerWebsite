@@ -1,3 +1,8 @@
+/*
+ * I'm not gonna lie, the look of this page is heavily 'inspired' by 
+ * Evan Klitzke (https://eklitzke.org/index).  I hope you don't mind Evan.
+ */
+
 *{
     margin: 0px;
 }
@@ -26,8 +31,13 @@ main{
 
 table{
     box-shadow: 10px 0px 5px lightgray;
+    background-color: seashell;
 }
 
-tr{
-    background: lightgray;
+tr a{
+    color: black
+}
+
+tr a:visited{
+    color: purple;
 }

@@ -9,14 +9,33 @@
     <script type="text/javascript">
       window.onload = (e) =>{
 	  var posts = JSON.parse(postList);
-	  var page = document.getElementById("main");
-	  page.innerHTML = "<table><tbody id='tableBody'>";
-
 	  var table = document.getElementById("tableBody");
+
 	  for (var i = 0; i < posts.length; i++){
-	      table.innerHTML = "<tr><td><a href=\"" + posts[i].link + "\">" +
-		  posts[i].title + "</a></td></tr>";
+
+	      //create table row section
+	      var tRow = document.createElement("TR");
+	      table.appendChild(tRow);
+	      if (i % 2 == 1){
+		  var color = document.createAttribute("style");
+		  color.value = "background-color: lightgray;";
+		  tRow.setAttributeNode(color);
+	      }
+
+	      //create a table data section
+	      var tData = document.createElement("TD");
+	      tRow.appendChild(tData);
+
+	      //create the link and add it to the table
+	      var a = document.createElement("A");
+	      var l = document.createAttribute("href");
+	      l.value = posts[i].link;
+	      a.setAttributeNode(l);
+	      a.innerHTML = posts[i].title;
+	      tData.appendChild(a);
+	      
 	  }
+	  console.log("This isn't working");
       };
     </script>
 
@@ -30,6 +49,11 @@
     </header>
     
     <main id="main">
+      <table id="myTable">
+	<tbody id="tableBody">
+
+	</tbody>
+      </table>
       <!-- Plan for this page:
 	   Use js to find files in a subfolder
 	   Display those files as links (use title of page)
