@@ -1,6 +1,7 @@
 #a folder of beaker browser stuff that I didn't create
-./vendor/**
+vendor/**
+vendor
 
 #emacs files
-~*
+*~
 \#*
