@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./ideas.css">
+    <script type="text/javascript" src="./ideas.json"></script>
+    <!--<script type="text/javascript" src="./ideas.js"></script>-->
+
+    <script type="text/javascript">
+      window.onload = (e) =>{
+	  var posts = JSON.parse(postList);
+	  var page = document.getElementById("main");
+	  page.innerHTML = "<table><tbody id='tableBody'>";
+
+	  var table = document.getElementById("tableBody");
+	  for (var i = 0; i < posts.length; i++){
+	      table.innerHTML = "<tr><td><a href=\"" + posts[i].link + "\">" +
+		  posts[i].title + "</a></td></tr>";
+	  }
+      };
+    </script>
+
+  </head>
+  <body>
+
+    <header>
+      <center>
+	<h1>Ideas and Research, etc.</h1>
+      </center>
+    </header>
+    
+    <main id="main">
+      <!-- Plan for this page:
+	   Use js to find files in a subfolder
+	   Display those files as links (use title of page)
+
+	   Think similar to the microblog or Evan Klitzke
+	-->
+    </main>
+  </body>
+</html>

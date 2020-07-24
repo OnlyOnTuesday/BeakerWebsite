@@ -1,0 +1,9 @@
+var posts = [
+    {
+	"title": "Using plants to reduce ocean acidification",
+	"link": "./IdeaPosts/plantsAndOcean.html"
+    }
+]
+
+
+var postList = JSON.stringify(posts);

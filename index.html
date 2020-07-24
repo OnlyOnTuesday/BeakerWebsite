@@ -2,39 +2,92 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!--<link rel="icon" type="image/png" sizes="32x32" href="/thumb">-->
+    <link rel="icon" type="image/png" sizes="32x32" href="/thumb">
     <link rel="stylesheet" type="text/css" href="./style.css">
-    <!--<script type="module" src="./currentStatus.js"></script>-->
-    <script src="./animation.js"></script>
+    <script type="module" src="/vendor/pauls-ui-kit/microblog.js"></script>
+    <script type="module" src="./currentStatus.js"></script>
+    <script src="./breakout.js"></script>
   </head>
   <body>
-    <main>
       <header>
         <img src="/thumb">
         <h1>OnlyOnTuesdays</h1>
       </header>
-      <current-status></current-status>
-      <p>Welcome to my profile!</p>
-      <button id="Add Contact">Add to Address Book</button>
 
-      <!-- TODO: Put this in an iframe so I can focus and unfocus it -->
+      <main>
       <br>
       <br>
-      <button id="startBrickBreaker" onclick="start()">Start</button>
-      <div id="animationContainer">
-	<div id="ball" style="left:190px; top:190px">
-	</div>
-	<!--style tag is inline so that the js script can read the value.
-	  Apparently object.style.left returns null if it's defined in a 
-	  separate style sheet-->
-        <div id="bar" style="left:150px; top=380px">
-        </div>
+<!--
+      <aside id="social">
+        <p>Hello!  I don't really know what I'm doing, but that's what makes it fun :)</p>
+        <p>Ohio University undergrad (MC509119@ohio.edu)</p>
+        <button id="Add Contact">Add to Address Book</button>
+        <current-status></current-status>
+      </aside>
+
+      -->
+      <div class="social">
+        <p>Hello! I don't really know what I'm doing, but that's what makes it fun :)</p>
+        <p>Ohio University undergrad (MC509119@ohio.edu)</p>
+        <button id="Add Contact">Add to Address Book</button>
+        <current-status></current-status>
+      </div>
+
+      <div class="main">
+      <center>
+      <h2>Microblog:</h2>
+      <pfrazee-microblog></pfrazee-microblog>
+      </center>
+      </div>
+
+      <div class="games">
+
+      <button id="startBreakout" onclick="main()">Start</button>
+      <div id="breakout">
+    	<div class="block" style="background: red;"></div>
+	    <div class="block" style="left: 50px; background: red;"></div>
+	    <div class="block" style="left: 100px; background: red;"></div>
+	    <div class="block" style="left: 150px; background: red;"></div>
+	    <div class="block" style="left: 200px; background: red;"></div>
+	    <div class="block" style="left: 250px; background: red;"></div>
+	    <div class="block" style="left: 300px; background: red;"></div>
+    	<div class="block" style="left: 350px; background: red;"></div>
+
+	    <div class="block" style="top: 10px; background: red;"></div>
+	    <div class="block" style="top: 10px; left: 50px; background: red;"></div>
+	    <div class="block" style="top: 10px; left: 100px; background: red;"></div>
+	    <div class="block" style="top: 10px; left: 150px; background: red;"></div>
+	    <div class="block" style="top: 10px; left: 200px; background: red;"></div>
+	    <div class="block" style="top: 10px; left: 250px; background: red;"></div>
+	    <div class="block" style="top: 10px; left: 300px; background: red;"></div>
+	    <div class="block" style="top: 10px; left: 350px; background: red;"></div>
+
+	    <div class="block" style="top: 20px; background: red;"></div>
+	    <div class="block" style="top: 20px; left: 50px; background: red;"></div>
+    	<div class="block" style="top: 20px; left: 100px; background: red;"></div>
+	    <div class="block" style="top: 20px; left: 150px; background: red;"></div>
+	    <div class="block" style="top: 20px; left: 200px; background: red;"></div>
+	    <div class="block" style="top: 20px; left: 250px; background: red;"></div>
+	    <div class="block" style="top: 20px; left: 300px; background: red;"></div>
+	    <div class="block" style="top: 20px; left: 350px; background: red;"></div>
+	
+
+
+	    <div id="ball" style="left:190px; top:370px"></div>
+	    <!--style tag is inline so that the js script can read the value.
+	    Apparently object.style.left returns null if it's defined in a 
+	    separate style sheet-->
+      <div id="bar" style="left:150px; top=380px"></div>
+      </div>
+
       </div>
 
     </main>
   </body>
-  <!--<script>
+  <script>
   
+    addContact = document.getElementById("Add Contact")
+
     addContact.onClick = function(){
       beaker.contacts.requestAddContact(location.toString())
     }
@@ -44,5 +97,5 @@
       title.textContent = info.title
       description.textContent = info.description
     }
-  </script>-->
+  </script>
 </html>
